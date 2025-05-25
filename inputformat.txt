@@ -1,0 +1,9 @@
+# A comment line is ignored
+instance_id,L,C,T           # header row – exactly these four fields
+inst01,   3,2,50            # → 3 labs, 2 paid visits, deadline 50
+lab, 4, 7,5,11,3            # “lab” row = keyword + periods…
+lab, 2, 12,14
+lab, 5, 4,4,4,4,4
+                           # empty line separates instances
+inst02, 1,1,20
+lab, 3, 6,7,10

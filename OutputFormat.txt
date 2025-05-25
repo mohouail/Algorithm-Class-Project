@@ -1,0 +1,3 @@
+instance_id,best_usage,idle_time,labs,counted_students
+inst01,      42,        8,        3, 9
+inst02,      13,        7,        1, 2

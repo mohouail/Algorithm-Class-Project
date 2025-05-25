@@ -1,0 +1,3 @@
+C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem/cmake-build-debug/CMakeFiles/stairspproblem.dir
+C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
