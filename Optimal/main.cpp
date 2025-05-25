@@ -49,86 +49,99 @@ void pruneInstance(Instance& ins) {
         }
     }
 }
-/*----------- Helper DFS ----------*/
-void dfsRecursive(const Instance& ins, const vector<vector<int>>& finishPerLab,
-                  const vector<int>& finishTimes, const vector<Lab>& labs,
-                  vector<int>& inspections, int start, int C, int T, long long& bestUsage) {
+/* ---------- Helper DFS with branch-and-bound (Opt 3) ---------- */
+void dfsRecursive(const vector<Lab>& labs,
+                  const vector<int>& finishTimes,
+                  vector<int>& inspections,
+                  int nextIdx,                 // first index still usable in finishTimes
+                  int C, int T, int L,
+                  long long& bestUsage,
+                  long long usedSoFar,         // usage gained up to lastCut
+                  int    lastCut)              // last inspection time (0 at root)
+{
+    /* -------- branch-and-bound upper bound -------- */
+    long long optimistic = usedSoFar + 1LL * (T - lastCut) * L;   // every lab full till T
+    if (optimistic <= bestUsage) return;                          // prune
 
-    int L = labs.size();
-
-    if ((int)inspections.size() == C) {
-        long long used = 0;
-        vector<int> idx(L, 0);
-        vector<int> avail(L, 0);
+    /* -------- base: placed all C inspections -------- */
+    if ((int)inspections.size() == C)
+    {
+        /* simulate with current inspections */
         vector<int> cuts = inspections;
         cuts.push_back(T);
 
-        for (int cut : cuts) {
-            for (int i = 0; i < L; ++i) {
-                int t = avail[i];
-                while (idx[i] < (int)labs[i].p.size() && t + labs[i].p[idx[i]] <= cut) {
+        vector<int> idx(L, 0);
+        vector<int> avail(L, 0);
+        vector<int> busy(L, 0);
+        long long used = usedSoFar;          // continue from previous blocks
+        int prev = lastCut;
+
+        for (int cut : cuts)
+        {
+            for (int i = 0; i < L; ++i)
+            {
+                int t = max(avail[i], busy[i]);
+                while (idx[i] < (int)labs[i].p.size() &&
+                       t + labs[i].p[idx[i]] <= cut)
+                {
                     used += labs[i].p[idx[i]];
-                    t += labs[i].p[idx[i]];
+                    t    += labs[i].p[idx[i]];
+                    busy[i] = t;
                     idx[i]++;
                 }
-                avail[i] = cut; // inspection refresh
+                if (busy[i] <= cut) avail[i] = cut;   // lab becomes clean only if idle
             }
+            prev = cut;
         }
-
-        if (used > bestUsage)
-            bestUsage = used;
-
+        bestUsage = max(bestUsage, used);
         return;
     }
 
-    for (int i = start; i < (int)finishTimes.size(); ++i) {
-        int currentTime = finishTimes[i];
-        bool helps = false;
+    /* -------- recursive step: try remaining finish-times -------- */
+    for (int idx = nextIdx; idx < (int)finishTimes.size(); ++idx)
+    {
+        int t = finishTimes[idx];
+        if (t >= T) break;                  // Opt 5 already implicit through pruning
 
-        for (int lab = 0; lab < L && !helps; ++lab) {
-            for (int ft : finishPerLab[lab]) {
-                if (ft == currentTime) {
-                    helps = true;
-                    break;
-                }
-            }
-        }
-
-        if (helps) {
-            inspections.push_back(currentTime);
-            dfsRecursive(ins, finishPerLab, finishTimes, labs, inspections, i + 1, C, T, bestUsage);
-            inspections.pop_back();
-        }
+        inspections.push_back(t);
+        dfsRecursive(labs, finishTimes, inspections,
+                     idx + 1, C, T, L,
+                     bestUsage, usedSoFar, t);
+        inspections.pop_back();
     }
 }
 
-/* ---------- Stub solver  ---------- */
-
-pair<long long, long long> solveExact(const Instance& ins) {
+/* ---------- Exact solver with Opt 1 (finish-times) ---------- */
+pair<long long,long long> solveExact(const Instance& ins)
+{
     int L = ins.L, C = ins.C, T = ins.T;
     const auto& labs = ins.labs;
 
-    set<int> finishTimesSet;
-    vector<vector<int>> finishPerLab(L);
+    /* ---- build unique finish-times, ≤ C+1 students per lab ---- */
+    vector<int> finishTimes;
+    finishTimes.reserve( (C+1) * L );
 
-    for (int i = 0; i < L; ++i) {
+    for (int lab = 0; lab < L; ++lab)
+    {
         int t = 0;
-        for (int dur : labs[i].p) {
-            t += dur;
-            if (t < T) {
-                finishTimesSet.insert(t);
-                finishPerLab[i].push_back(t);
-            }
+        for (int j = 0;
+             j < (int)labs[lab].p.size() && j < C + 1; ++j)
+        {
+            t += labs[lab].p[j];
+            if (t < T) finishTimes.push_back(t);
         }
     }
-
-    vector<int> finishTimes(finishTimesSet.begin(), finishTimesSet.end());
+    sort(finishTimes.begin(), finishTimes.end());
+    finishTimes.erase(unique(finishTimes.begin(), finishTimes.end()),
+                      finishTimes.end());
 
     long long bestUsage = 0;
-    vector<int> inspections;
-    dfsRecursive(ins, finishPerLab, finishTimes, labs, inspections, 0, C, T, bestUsage);
+    vector<int> inspections;             // grows to size C
+    dfsRecursive(labs, finishTimes, inspections,
+                 0, C, T, L,
+                 bestUsage, 0LL, 0);
 
-    long long idle = 1LL * T * ins.L - bestUsage;
+    long long idle = 1LL * T * L - bestUsage;
     return {bestUsage, idle};
 }
 

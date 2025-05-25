@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem
+# Install script for directory: C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Optimal
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Optimal/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

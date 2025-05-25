@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem/cmake-build-debug"
+			"value" : "c:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Optimal/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Optimal/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem"
+			"value" : "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Optimal"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1291,7 +1291,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem/cmake-build-debug"
+			"value" : "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Optimal/cmake-build-debug"
 		},
 		{
 			"name" : "stairspproblem_IS_TOP_LEVEL",
@@ -1315,7 +1315,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Assembly/project2/code/stairspproblem"
+			"value" : "C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Optimal"
 		}
 	],
 	"kind" : "cache",
