@@ -1,8 +1,8 @@
-Lab,inspection_times,total_usage_time
-Lab_1,60;120;180,13
-Lab_2,60;120;180,17
-Lab_3,60;120;180,25
-Lab_4,60;120;180,20
-Lab_5,60;120;180,25
-Lab_6,60;120;180,24
-Lab_7,60;120;180,28
+Lab,inspection_times,total_usage_time (hours)
+Lab_1,28;29;30,13
+Lab_2,28;29;30,17
+Lab_3,28;29;30,25
+Lab_4,28;29;30,20
+Lab_5,28;29;30,25
+Lab_6,28;29;30,24
+Lab_7,28;29;30,28
