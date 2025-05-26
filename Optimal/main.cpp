@@ -168,8 +168,8 @@ pair<long long,long long> solveExact(const Instance& ins)
 
 /* ---------- MAIN ---------- */
 int main() {
-    string inputfile = "validationInstances.csv";
-    string outputfile = "validationOutput.csv";
+    string inputfile = "500_tight_instances.csv";
+    string outputfile = "500_tight_instancesOutputOptimal.csv";
     ifstream fin(inputfile);
     ofstream fout(outputfile);
     if (!fin) { cerr << "Cannot open input file\n"; return 1; }

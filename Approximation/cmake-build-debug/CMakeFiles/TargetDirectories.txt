@@ -1,0 +1,3 @@
+C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Approximation/cmake-build-debug/CMakeFiles/Approximation.dir
+C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Approximation/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ouail estoyloco/Desktop/mememe/college/semester 5/Algorithm class/project/Algorithm-Class-Project/Approximation/cmake-build-debug/CMakeFiles/rebuild_cache.dir
