@@ -1,0 +1,8 @@
+# A test instance where optimal and approximation will differ
+# Format: L,C,T
+2,2,2
+n
+2,2
+p
+2,2
+2,2
